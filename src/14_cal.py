@@ -22,3 +22,30 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+# c = calendar.TextCalendar()
+# s = c.formatmonth(1994,9)
+# print(s)
+
+# c = calendar.Calendar(firstweekday=0)
+# for s in c.itermonthdays(1,1):  
+#   print(s)
+
+# x = input("Enter comma-separated year then month: ").split(',')
+# print('list',x)
+
+def get_calendar():
+  # print('arg',arg)
+  c = calendar.TextCalendar()
+  t = datetime.today()
+  s = c.formatmonth(t.year, t.month)
+  if len(sys.argv) < 2:
+    return s
+  elif len(sys.argv) == 2:
+    s = c.formatmonth(t.year, int(sys.argv[1]))
+    return s
+  elif len(sys.argv) == 3:
+    s = c.formatmonth(int(sys.argv[2]), int(sys.argv[1]))
+    return s
+    
+print(get_calendar())
